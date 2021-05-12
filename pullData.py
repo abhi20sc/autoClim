@@ -41,7 +41,7 @@ def downloadData():
 	airTemp_surface = "ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/surface/air.sig995." + str(year) + ".nc"
 	airTemp_midLevels = "ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/pressure/air." + str(year) + ".nc"
 	zonal_surface = 'ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/surface/uwnd.sig995.' + str(year) + '.nc'
-	zonal_midLevels = 'ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/pressure/uwnd' + str(year) + '.nc'
+	zonal_midLevels = 'ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/pressure/uwnd.' + str(year) + '.nc'
 	data = [airTemp_surface,airTemp_midLevels, zonal_surface, zonal_midLevels]
 	for filename in data:
 		print("\n Downloading " + filename)
