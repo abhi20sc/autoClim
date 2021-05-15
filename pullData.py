@@ -1,7 +1,7 @@
 import wget
 import os
 
-def downloadData():
+def getDates():
 	monthConversion = {
 		"January" : [1,31],
 		"February" : [2,28],
@@ -32,6 +32,9 @@ def downloadData():
 				dateAccep = True
 		if dateAccep == True and monthAccep == True and yearAccep == True:
 			inAccep = True
+	return [year,month,date,monthConversion]
+
+def downloadData(year):
 	# Clearing all older files from directory.
 	outPath = 'datasets/'
 	filelist = [ f for f in os.listdir(outPath)]
@@ -42,10 +45,12 @@ def downloadData():
 	airTemp_midLevels = "ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/pressure/air." + str(year) + ".nc"
 	zonal_surface = 'ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/surface/uwnd.sig995.' + str(year) + '.nc'
 	zonal_midLevels = 'ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/pressure/uwnd.' + str(year) + '.nc'
-	data = [airTemp_surface,airTemp_midLevels, zonal_surface, zonal_midLevels]
+	merid_surface = 'ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/surface/vwnd.sig995.' + str(year) + '.nc'
+	merid_midLevels = 'ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/pressure/vwnd.' + str(year) + '.nc'
+	data = [airTemp_surface, airTemp_midLevels, zonal_surface, zonal_midLevels, merid_surface, merid_midLevels]
 	for filename in data:
 		print("\n Downloading " + filename)
-		wget.download(filename, out = outPath)
-	return [year,month,date]
+		wget.download(filename, out = 'datasets/')
 
-downloadData()
+"""year, month, date = getDates()
+downloadData(year)"""
