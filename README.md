@@ -8,3 +8,12 @@ This project looks to create a framework that allows a user to develop a list of
 - Sample output for daily profiles can be found under **finalOutput_plots/dailyProfile** with appropriate filenames. 
 - Sample output is currently centered on **November 7, 2020**
 - Datasets (used for sample output) handled by the *downloadData()* function in **pullData.py** have not been added to the repository. For the sake of maintaining a clean directory structure, an empty stand-in text file has been added to their target folder.
+
+### Dependencies:
+- **numpy 1.19.5**: Primary module used for data handling throughout the project.
+- **Matplotlib 3.3.4**: Used to present results graphically.
+- **netCDF4 1.5.2**: Used as a handler for .nc file input.
+- **Cartopy 0.19.2**: Provides a global basemap.
+- **wget 3.2.0**: Web interfacing to automate dataset downloads.
+- **os**: Handles internal directory structure.
+- **PIL 1.1.6**: Setting up the basemap usage in plots.
