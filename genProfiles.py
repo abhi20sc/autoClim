@@ -1,11 +1,24 @@
 from pullData import getDates
-from matplotlib import pyplot as plt
 import numpy as np
 from netCDF4 import Dataset
 
-year, month, date, monthConversion = getDates()
+#year, month, date, monthConversion = getDates()
+monthConversion = {
+		"January" : [1,31],
+		"February" : [2,28],
+		"March" : [3,31],
+		"April" : [4,30],
+		"May" : [5,31],
+		"June" : [6,30],
+		"July" : [7,31],
+		"August" : [8,31],
+		"September" : [9,30],
+		"October" : [10,31],
+		"November" : [11,30],
+		"December" : [12,31]
+	}
 
-def generate_weekly_profs(year,month,date,monthConversion):
+def generate_daily_profs(year,month,date,monthConversion):
 	# Opening netCDF4 files
 	NC_airTsurf = Dataset("datasets/air.sig995." + str(year) + ".nc", "r", format="NETCDF4")
 	NC_uwndSurf = Dataset("datasets/uwnd.sig995." + str(year) + ".nc", "r", format="NETCDF4")
@@ -55,11 +68,30 @@ def generate_weekly_profs(year,month,date,monthConversion):
 	vwndSurf = vwnd[newDate-3:newDate+4]
 	vwnd_250mbar = vwnd_250mbar[newDate-3:newDate+4]
 	vwnd_850mbar = vwnd_850mbar[newDate-3:newDate+4]
-	outData = np.array([airTsurf, airT_250mbar, airT_850mbar, uwndSurf,
-	 uwnd_250mbar, uwnd_850mbar, vwndSurf, vwnd_250mbar, vwnd_850mbar])
+	outData = np.array([airTsurf, uwndSurf, vwndSurf, airT_250mbar, 
+		uwnd_250mbar, vwnd_250mbar, airT_850mbar, uwnd_850mbar, vwnd_850mbar])
 	np.save("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy",outData)
 	return 0
 
+def diffs_gen():
+	mainData = np.load("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
+	main_airT = [mainData[0],mainData[3],mainData[6]]
+	main_uwnd = [mainData[1],mainData[4],mainData[7]]
+	main_vwnd = [mainData[2],mainData[5],mainData[8]]
+	mainData = [main_airT, main_uwnd, main_vwnd]
+	mainDiff = []
+	for variable in mainData:
+		varDiff = []
+		for alt in variable:
+			#print(alt.shape)
+			altDiff = []
+			for stateIndex in range(1,len(alt)):
+				altDiff.append(alt[stateIndex] - alt[stateIndex-1])
+			varDiff.append(altDiff)
+		mainDiff.append(varDiff)
+	np.save("outData/3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy",mainDiff)
+	return 0
 
-
+generate_daily_profs(2020,"November",7,monthConversion)
+diffs_gen()
 # npy example centered on November 7 2020.
