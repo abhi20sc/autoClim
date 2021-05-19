@@ -2,6 +2,7 @@ from pullData import *
 from genProfiles import *
 from makePlots import *
 from createGlobalMap import *
+from cleanup import *
 from matplotlib import pyplot as plt
 import numpy as np
 from netCDF4 import Dataset
@@ -22,6 +23,7 @@ def main():
 		"November" : [11,30],
 		"December" : [12,31]
 	}
+	# clean() --> Remove comment to delete all sample data + datasets.
 	#downloadData(year) # Comment out if datasets downloaded
 	generate_daily_profs(year,month,date,monthConversion)
 	diffs_gen()
