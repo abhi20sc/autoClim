@@ -25,21 +25,20 @@ def make_daily_plots():
 		restructuredDay = day.reshape(3,3,37,72)
 		levelTitleCount = 0
 		for level in restructuredDay:
-			airT, uwnd, vwnd = level[0], level[1], level[3]
+			airT, uwnd, vwnd = level[0], level[1], level[2]
+			print(airT.max())
 			fig = plt.figure()
 			ax = plt.axes()
-			ax.imshow(im,extent=[0,71,0,180/5])
+			plt.imshow(im,extent=[0,71,0,180/5])
 			plt.xlabel("Longitude")
 			plt.ylabel("Latitude")
 			plt.xticks(x,xLabels)
 			plt.yticks(y,yLabels)
-			plt.contourf(airT,alpha=0.4)
+			ax.contourf(airT,alpha=0.4)
+			plt.colorbar(ax=ax, label="Air Temperature", orientation="horizontal")
 			plt.quiver(uwnd,vwnd,color='red',alpha=0.4)
-			plt.colorbar(label="Air Temperature", orientation="horizontal")
 			plt.savefig('finalOutput_plots/dailyProfiles/day' + str(dayTitleCount) + titles[levelTitleCount])
 			plt.clf()
 			levelTitleCount += 1
 		dayTitleCount += 1
 	return 0
-
-make_daily_plots()
