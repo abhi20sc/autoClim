@@ -29,6 +29,7 @@ def main():
 	diffs_gen()
 	createGlobalMap()
 	make_daily_plots()
+	make_delta_plots()
 
 	
 

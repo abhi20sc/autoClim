@@ -2,22 +2,6 @@ from pullData import getDates
 import numpy as np
 from netCDF4 import Dataset
 
-#year, month, date, monthConversion = getDates()
-monthConversion = {
-		"January" : [1,31],
-		"February" : [2,28],
-		"March" : [3,31],
-		"April" : [4,30],
-		"May" : [5,31],
-		"June" : [6,30],
-		"July" : [7,31],
-		"August" : [8,31],
-		"September" : [9,30],
-		"October" : [10,31],
-		"November" : [11,30],
-		"December" : [12,31]
-	}
-
 def generate_daily_profs(year,month,date,monthConversion):
 	# Opening netCDF4 files
 	NC_airTsurf = Dataset("datasets/air.sig995." + str(year) + ".nc", "r", format="NETCDF4")
@@ -83,7 +67,6 @@ def diffs_gen():
 	for variable in mainData:
 		varDiff = []
 		for alt in variable:
-			#print(alt.shape)
 			altDiff = []
 			for stateIndex in range(1,len(alt)):
 				altDiff.append(alt[stateIndex] - alt[stateIndex-1])
@@ -92,6 +75,6 @@ def diffs_gen():
 	np.save("outData/3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy",mainDiff)
 	return 0
 
-generate_daily_profs(2020,"November",7,monthConversion)
+#generate_daily_profs(2020,"November",7,monthConversion)
 diffs_gen()
 # npy example centered on November 7 2020.

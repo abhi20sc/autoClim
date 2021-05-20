@@ -6,7 +6,7 @@ def make_daily_plots():
 	weeklyPlotsMain = np.load("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
 	titles = ['at_Surface','_250mbar','_850mbar']
 	basic = np.linspace(-1,62,9,endpoint=False)
-	week = []#np.empty((7,9))
+	week = []
 	newWeekly = weeklyPlotsMain.reshape(63,73,144)
 	for i in range(7):
 		basic = [e + 1 for e in basic]
@@ -26,7 +26,6 @@ def make_daily_plots():
 		levelTitleCount = 0
 		for level in restructuredDay:
 			airT, uwnd, vwnd = level[0], level[1], level[2]
-			print(airT.max())
 			fig = plt.figure()
 			ax = plt.axes()
 			plt.imshow(im,extent=[0,71,0,180/5])
@@ -34,11 +33,58 @@ def make_daily_plots():
 			plt.ylabel("Latitude")
 			plt.xticks(x,xLabels)
 			plt.yticks(y,yLabels)
-			ax.contourf(airT,alpha=0.4)
-			plt.colorbar(ax=ax, label="Air Temperature", orientation="horizontal")
-			plt.quiver(uwnd,vwnd,color='red',alpha=0.4)
+			cs = ax.contourf(airT,alpha=0.6)
+			plt.colorbar(cs, ax=ax, label="Air Temperature", orientation="horizontal")
+			plt.quiver(uwnd,vwnd,color='red',alpha=0.6)
 			plt.savefig('finalOutput_plots/dailyProfiles/day' + str(dayTitleCount) + titles[levelTitleCount])
+			plt.cla()
 			plt.clf()
+			plt.close()
 			levelTitleCount += 1
 		dayTitleCount += 1
 	return 0
+
+def make_delta_plots():
+	diffDataMain = np.load('outData/3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy')
+	titles = ['at_Surface','_250mbar','_850mbar']
+	im = Image.open("globalMap.png")
+	x = np.linspace(0,71,num=9,endpoint=True)
+	xLabels = [str(i) for i in list(np.arange(start=-180,stop=181,step=45))]
+	y = np.linspace(0,37,num=7,endpoint=True)
+	yLabels = [str(i) for i in list(np.arange(start=-90,stop=91,step=30))]
+	diffDataMain = diffDataMain.reshape(9,6,73,144)
+	diffDataMain = np.rot90(diffDataMain)
+	diffDataMain = diffDataMain.reshape(6,3,3,73,144)
+	dayTitleCount = 1
+	for day in diffDataMain:
+		day = np.rot90(day)
+		levelTitleCount = 0
+		for level in day:
+			airT, uwnd, vwnd = level[0], level[1], level[2]
+			airT = airT[::2,::2]
+			uwnd = uwnd[::2,::2]
+			vwnd = vwnd[::2,::2]
+			fig = plt.figure()
+			ax = plt.axes()
+			cs = ax.contourf(range(72),range(37),airT,alpha=0.6)
+			plt.imshow(im,extent=[0,71,0,180/5])
+			plt.xlabel("Longitude")
+			plt.ylabel("Latitude")
+			plt.xticks(x,xLabels)
+			plt.yticks(y,yLabels)
+			plt.colorbar(cs,ax=ax,use_gridspec=False,label="Change in Air Temperature",orientation='horizontal')
+			plt.quiver(uwnd,vwnd,color='red',alpha=0.6)
+			plt.savefig('finalOutput_plots/deltaProfiles/day' + str(dayTitleCount) 
+				+ "to" + str(dayTitleCount + 1) + titles[levelTitleCount])
+			plt.clf()
+			plt.cla()
+			plt.close(fig)
+			levelTitleCount += 1
+		dayTitleCount += 1
+	return 0
+			
+
+
+
+make_daily_plots()
+make_delta_plots()
