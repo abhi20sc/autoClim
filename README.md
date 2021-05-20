@@ -25,5 +25,5 @@ This project looks to create a framework that allows a user to develop a list of
 
 Here's some of our output!
 
-![day2to3_250mbar](https://user-images.githubusercontent.com/47943744/118972273-0082d180-b98e-11eb-90d9-c855b542ae36.png)
 ![day5_850mbar](https://user-images.githubusercontent.com/47943744/118973513-61f77000-b98f-11eb-9cfd-89eff3742d0e.png)
+![day2to3_250mbar](https://user-images.githubusercontent.com/47943744/118972273-0082d180-b98e-11eb-90d9-c855b542ae36.png)
