@@ -59,6 +59,7 @@ def generate_daily_profs(year,month,date,monthConversion):
 
 def diffs_gen():
 	mainData = np.load("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
+	# Separating into qty classes.
 	main_airT = [mainData[0],mainData[3],mainData[6]]
 	main_uwnd = [mainData[1],mainData[4],mainData[7]]
 	main_vwnd = [mainData[2],mainData[5],mainData[8]]
@@ -74,7 +75,4 @@ def diffs_gen():
 		mainDiff.append(varDiff)
 	np.save("outData/3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy",mainDiff)
 	return 0
-
-#generate_daily_profs(2020,"November",7,monthConversion)
-diffs_gen()
 # npy example centered on November 7 2020.

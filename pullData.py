@@ -2,6 +2,7 @@ import wget
 import os
 
 def getDates():
+	# Internal dictionary for validation calc.
 	monthConversion = {
 		"January" : [1,31],
 		"February" : [2,28],
@@ -51,6 +52,3 @@ def downloadData(year):
 	for filename in data:
 		print("\n Downloading " + filename)
 		wget.download(filename, out = 'datasets/')
-
-"""year, month, date = getDates()
-downloadData(year)"""
