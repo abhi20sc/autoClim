@@ -3,6 +3,7 @@ from genProfiles import *
 from makePlots import *
 from createGlobalMap import *
 from cleanup import *
+from makeTemp3dSurface import *
 from matplotlib import pyplot as plt
 import numpy as np
 from netCDF4 import Dataset
@@ -16,6 +17,7 @@ def main():
 	createGlobalMap()
 	make_daily_plots()
 	make_delta_plots()
+	make_temp3d_dailyPlots()
 
 if __name__ == "__main__":
 	main()

@@ -50,5 +50,3 @@ def make_temp3d_dailyPlots():
 			levelTitleCount += 1 # Lines 49 + 50: Increment filename variables
 		dayTitleCount += 1
 	return 0
-
-make_temp3d_dailyPlots()
