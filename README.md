@@ -11,7 +11,7 @@ This project looks to create a framework that allows a user to develop a list of
   - eg. for an input of November 7, 2020, the program outputs profiles from the 4th to the 10th, inclusive.
 - Sample output is currently centered on **November 7, 2020**
 - Datasets (used for sample output) handled by the *downloadData()* function in **pullData.py** have not been added to the repository. For the sake of maintaining a clean directory structure, an empty stand-in text file has been added to their target folder.
-- Execute *runMain.py* to create your own profiles!
+- Execute *runMain.py* to create your own profiles! (Python 3.7)
 
 ### Dependencies:
 - **numpy 1.19.5**: Primary module used for data handling throughout the project.
