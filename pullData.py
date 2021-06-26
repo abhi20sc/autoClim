@@ -130,7 +130,7 @@ def downloadData(year,chosenData):
 		os.remove(os.path.join(outPath, file))
 	# Downloading data.
 	for filename in chosenFTPs:
-		print("\n Downloading + " filename)
+		print("\n Downloading " + filename)
 		wget.download(filename, out = 'datasets/')
 	return 0.
 
