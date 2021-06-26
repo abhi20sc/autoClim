@@ -42,6 +42,7 @@ def downloadData(year):
 	for file in filelist:
 		os.remove(os.path.join(outPath, file))
 	# Downloading data.
+<<<<<<< HEAD
 	airTemp_surface = "ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/surface/air.sig995." + str(year) + ".nc"
 	airTemp_midLevels = "ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/pressure/air." + str(year) + ".nc"
 	zonal_surface = 'ftp://ftp2.psl.noaa.gov/Datasets/ncep.reanalysis.dailyavgs/surface/uwnd.sig995.' + str(year) + '.nc'
@@ -52,3 +53,12 @@ def downloadData(year):
 	for filename in data:
 		print("\n Downloading " + filename)
 		wget.download(filename, out = 'datasets/')
+=======
+	for filename in chosenFTPs:
+		print("\n Downloading " + filename)
+		wget.download(filename, out = 'datasets/')
+	return 0.
+
+data = chooseData(2020)
+downloadData(2020,data)
+>>>>>>> new-variables

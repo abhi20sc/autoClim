@@ -1,8 +1,7 @@
-from pullData import getDates
 import numpy as np
 from netCDF4 import Dataset
 
-def generate_daily_profs(year,month,date,monthConversion):
+def generate_daily_windT_profs(year,month,date,monthConversion):
 	# Opening netCDF4 files
 	NC_airTsurf = Dataset("datasets/air.sig995." + str(year) + ".nc", "r", format="NETCDF4")
 	NC_uwndSurf = Dataset("datasets/uwnd.sig995." + str(year) + ".nc", "r", format="NETCDF4")
@@ -57,7 +56,7 @@ def generate_daily_profs(year,month,date,monthConversion):
 	np.save("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy",outData)
 	return 0
 
-def diffs_gen():
+def diffs_windT_gen():
 	mainData = np.load("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
 	# Separating into qty classes.
 	main_airT = [mainData[0],mainData[3],mainData[6]]

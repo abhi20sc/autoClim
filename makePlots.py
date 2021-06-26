@@ -2,7 +2,7 @@ from matplotlib import pyplot as plt
 from PIL import Image
 import numpy as np
 
-def make_daily_plots():
+def make_daily_windT_plots():
 	# Loading data + setting up aux. iteration variables.
 	weeklyPlotsMain = np.load("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
 	titles = ['at_Surface','_250mbar','_850mbar']
@@ -50,7 +50,7 @@ def make_daily_plots():
 		dayTitleCount += 1
 	return 0
 
-def make_delta_plots():
+def make_delta_windT_plots():
 	# Loading data + setting up filename variables
 	diffDataMain = np.load('outData/3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy')
 	titles = ['at_Surface','_250mbar','_850mbar']
