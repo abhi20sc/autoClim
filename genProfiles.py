@@ -53,11 +53,11 @@ def generate_daily_windT_profs(year,month,date,monthConversion):
 	vwnd_850mbar = vwnd_850mbar[newDate-3:newDate+4]
 	outData = np.array([airTsurf, uwndSurf, vwndSurf, airT_250mbar, 
 		uwnd_250mbar, vwnd_250mbar, airT_850mbar, uwnd_850mbar, vwnd_850mbar])
-	np.save("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy",outData)
+	np.save("outData/windT_9qty-7day-2dSpatial_profiles_9x7x73x144_.npy",outData)
 	return 0
 
-def diffs_windT_gen():
-	mainData = np.load("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
+def diffs_windT_gen(err):
+	mainData = np.load("outData/windT_9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
 	# Separating into qty classes.
 	main_airT = [mainData[0],mainData[3],mainData[6]]
 	main_uwnd = [mainData[1],mainData[4],mainData[7]]
@@ -72,6 +72,6 @@ def diffs_windT_gen():
 				altDiff.append(alt[stateIndex] - alt[stateIndex-1])
 			varDiff.append(altDiff)
 		mainDiff.append(varDiff)
-	np.save("outData/3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy",mainDiff)
+	np.save("outData/windT_delta_3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy",mainDiff)
 	return 0
 # npy example centered on November 7 2020.

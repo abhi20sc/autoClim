@@ -1,34 +1,4 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@Mihir-DG 
-Mihir-DG
-/
-autoClim
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-autoClim/pullData.py /
-@Mihir-DG
-Mihir-DG test: removed comments on pullData for new branch
-Latest commit 8c443c0 17 hours ago
- History
- 1 contributor
-138 lines (132 sloc)  6.93 KB
-  
+from urllib.parse import urlparse
 import wget
 import numpy as np
 import os
@@ -50,7 +20,7 @@ def getDates():
 		"December" : [12,31]
 	}
  	## Validation and input
-	yearAccep, monthAccep, dayAccep = False, False, False
+	yearAccep, monthAccep, dateAccep = False, False, False
 	inAccep = False
 	while inAccep == False:
 		year = int(input("Year?"))
@@ -69,11 +39,11 @@ def getDates():
 
 
 def flatten_recursive(lst):
-    for item in lst:
-        if isinstance(item, list):
-            yield from flatten_recursive(item)
-        else:
-            yield item
+	for item in lst:
+		if isinstance(item, list):
+			yield from flatten_recursive(item)
+		else:
+			yield item
 
 def chooseData(year):
 	avail = {
@@ -99,6 +69,7 @@ def chooseData(year):
 	20 : "Tropopause Air Pressure - 3d Surface Plots",
 	21 : "Lifted Index (Surface) - Heatmap"
 	}
+	print("\n\n")
 	for option in avail.keys():
 		print(str(option) + ") " + avail[option])
 	print("\n\n Enter the serial numbers of all the profiles you're interested in, one-by-one. Enter '0' when you're finished!")
@@ -154,13 +125,11 @@ def downloadData(year,chosenData):
 		chosenFTPs.append(ftpLinks[slNo]) # Add value from key index.
 	chosenFTPs = list(flatten_recursive(chosenFTPs)) # Flatten chosenFTPs
 	chosenFTPs = list(dict.fromkeys(chosenFTPs)) # Ensure no repetition in download list.
-	# Clearing all older files from directory.
-	outPath = 'datasets/'
-	filelist = [ f for f in os.listdir(outPath)]
-	for file in filelist:
-		os.remove(os.path.join(outPath, file))
 	# Downloading data.
 	for filename in chosenFTPs:
-		print("\n Downloading + " filename)
-		wget.download(filename, out = 'datasets/')
+		newFilename = urlparse(filename)
+		newFilename = os.path.basename(newFilename.path)
+		if os.path.exists((os.path.join("datasets",newFilename)).strip()) == False:
+			print("\n Required file '" + os.path.join("datasets",newFilename) + "' doesn't exist! \n Downloading from " + filename)
+			wget.download(filename, out = 'datasets')
 	return 0.

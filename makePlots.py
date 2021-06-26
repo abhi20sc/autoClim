@@ -2,9 +2,9 @@ from matplotlib import pyplot as plt
 from PIL import Image
 import numpy as np
 
-def make_daily_windT_plots():
+def make_daily_windT_plots(err):
 	# Loading data + setting up aux. iteration variables.
-	weeklyPlotsMain = np.load("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
+	weeklyPlotsMain = np.load("outData/windT_9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
 	titles = ['at_Surface','_250mbar','_850mbar']
 	basic = np.linspace(-1,62,9,endpoint=False)
 	week = []
@@ -40,7 +40,7 @@ def make_daily_windT_plots():
 			plt.xticks(x,xLabels)
 			plt.yticks(y,yLabels)
 			cs = ax.contourf(airT,alpha=0.6)
-			plt.colorbar(cs, ax=ax, label="Air Temperature", orientation="horizontal")
+			plt.colorbar(cs, ax=ax, label="Air Temperature (deg C)", orientation="horizontal")
 			plt.quiver(uwnd,vwnd,color='red',alpha=0.6)
 			plt.savefig('finalOutput_plots/dailyProfiles/day' + str(dayTitleCount) + titles[levelTitleCount])
 			plt.cla() # Close ax w/colorbar
@@ -50,9 +50,9 @@ def make_daily_windT_plots():
 		dayTitleCount += 1
 	return 0
 
-def make_delta_windT_plots():
+def make_delta_windT_plots(err):
 	# Loading data + setting up filename variables
-	diffDataMain = np.load('outData/3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy')
+	diffDataMain = np.load('outData/windT_delta_3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy')
 	titles = ['at_Surface','_250mbar','_850mbar']
 	# See make_daily_plots() for lines 58-62 (inc.)
 	im = Image.open("globalMap.png") 

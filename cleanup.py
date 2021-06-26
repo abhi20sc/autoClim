@@ -7,7 +7,10 @@ def clean():
 	temp3d = 'finalOutput_plots/airTemperature_3dSurfacePlots'
 	npys = 'outData/'
 	foldersMain = [datasets, dailyProfiles_imgs, dailyChanges_imgs, temp3d, npys]
-	for item in os.listdir(folderMain):
-		for removal in item:
+	for item in foldersMain:
+		for removal in os.listdir(item):
 			os.remove(os.path.join(item,removal))
-	os.remove("globalMap.png")
+	try:
+		os.remove("globalMap.png")
+	except:
+		pass

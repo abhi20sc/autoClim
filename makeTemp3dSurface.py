@@ -3,8 +3,8 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
 
-def make_temp3d_windT_dailyPlots():
-	weeklyPlotsMain = np.load("outData/9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
+def make_temp3d_dailyPlots(err):
+	weeklyPlotsMain = np.load("outData/windT_9qty-7day-2dSpatial_profiles_9x7x73x144_.npy")
 	titles = ['at_Surface','_250mbar','_850mbar']
 	basic = np.linspace(-1,62,9,endpoint=False)
 	week = []

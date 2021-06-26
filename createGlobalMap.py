@@ -8,6 +8,5 @@ def createMap():
 	ax = plt.axes(projection=ccrs.PlateCarree())
 	ax.coastlines(linewidth=1)
 	ax.add_feature(cf.BORDERS,linestyle='-',linewidth=1)
-	plt.show()
 	fig.savefig('globalMap.png', bbox_inches='tight', pad_inches=0)
 	return 0.
