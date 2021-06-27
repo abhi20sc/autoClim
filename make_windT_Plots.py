@@ -53,7 +53,7 @@ def make_daily_windT_plots(err):
 def make_delta_windT_plots(err):
 	# Loading data + setting up filename variables
 	diffDataMain = np.load('outData/windT_delta_3x3qtyDiff-2dSpatial_profiles_3x3x6x73x144_.npy')
-	titles = ['at_Surface','_250mbar','_850mbar']
+	titles = ['_atSurface','_250mbar','_850mbar']
 	# See make_daily_plots() for lines 58-62 (inc.)
 	im = Image.open("globalMap.png") 
 	x = np.linspace(0,71,num=9,endpoint=True) 

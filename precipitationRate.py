@@ -4,7 +4,7 @@ from PIL import Image
 from matplotlib import pyplot as plt
 
 def generate_precipitationRate_profs(year,month,date,monthConversion):
-	NC_precipitationRate = Dataset("datasets/prate.sfc.gauss." + str(year) + ".nc")
+	NC_precipitationRate = Dataset("datasets/prate.sfc.gauss." + str(year) + ".nc","r",format="NETCDF4")
 	prate = np.array(NC_precipitationRate.variables['prate'])
 	# Month conversion to 365-day scale + leap year correction
 	if len(prate) == 366:

@@ -17,7 +17,7 @@ def generate_daily_windT_profs(year,month,date,monthConversion):
 	uwnd = np.array(NC_uwnd.variables['uwnd'])
 	vwnd = np.array(NC_vwnd.variables['vwnd'])
 	# Requirements for 250 + 850 mbar extraction
-	yearLen = len(airT)
+	yearLen = len(airT)	# Assuming airT, uwnd, & vwnd have equal no. of time entries. 
 	airT, uwnd, vwnd = airT.reshape(yearLen*17, 73, 144), uwnd.reshape(yearLen*17, 73, 144), vwnd.reshape(yearLen*17,73,144)
 	iteratorSkeleton = np.linspace(0,6205,366)
 	iterator850 = [int(i+2) for i in iteratorSkeleton]
