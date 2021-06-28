@@ -1,4 +1,6 @@
-## Modern Climate Events: Automated Tropospheric Global Profiles
+## autoClim: Modern Climate Events - Automated Tropospheric Global Profiles
+
+*autoClim  is currently undergoing a significant change in the variables offered, so this README may not provide a complete picture of the system's capabilities*  
 
 This project looks to create a framework that allows a user to develop a list of useful atmospheric profiles automatically, when given a date. As of now, air temperature, zonal wind, and meridional wind are the only quantities considered. The system outputs a series of plots describing the week's events and changes in key variables. We use [NOAA's NCEP/NCAR pressure reanalysis](https://psl.noaa.gov/data/gridded/data.ncep.reanalysis.html) data as our primary input. All variables are evaluated at 3 altitudes: near-surface, the 850 mbar pressure level, and the 250 mbar pressure level. 
 
