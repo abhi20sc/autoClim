@@ -3,7 +3,7 @@ from netCDF4 import Dataset
 from matplotlib import pyplot as plt
 from PIL import Image
 
-# Both datasets use an evenly spaced grid with a 2.5 deg. resolution. 
+# Both datasets use an evenly spaced grid with a 2.5 deg. resolution.
 # Relative humidity, expressed as a percentage, indicates a present state of absolute humidity relative to a maximum humidity given the same temperature.
 # Levels (kPa) --> {1000,925,850,700,600,500,400,300} --> doesn't go higher b/c of tropopause temp. inversion.
 
@@ -46,7 +46,7 @@ def plot_relHumidity(err):
 			fig = plt.figure()
 			ax = plt.axes()
 			plt.imshow(im,extent=[0,144,0,73])
-			plt.xlabel("Latitude")
+			plt.xlabel("Longitude")
 			plt.ylabel("Latitude")
 			cs =  ax.contourf(level,alpha=0.5)
 			plt.colorbar(cs, ax=ax, label="Relative Humidity (%)", orientation='horizontal')

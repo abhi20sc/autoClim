@@ -6,6 +6,7 @@ from cleanup import *
 from makeTemp3dSurface import *
 from precipitationRate import *
 from relativeHumidity import *
+from specificHumidity import *
 
 from matplotlib import pyplot as plt
 import numpy as np
@@ -28,7 +29,8 @@ def main():
 		[(generate_daily_windT_profs,year,month,date,monthConversion),(diffs_windT_gen,err), (make_delta_windT_plots,err)], # 2 --> Delta Plots for (1)
 		[(generate_daily_windT_profs,year,month,date,monthConversion), (make_temp3d_dailyPlots,err)], # 3 --> 3d surface plots -- air temperature
 		[(generate_precipitationRate_profs,year,month,date,monthConversion),(plot_precipitationRate,err)], # 4 --> Precipitation Rate Contours
-		[(generate_relHumidity_profs,year,month,date,monthConversion),(plot_relHumidity,err)] # 5 --> Relative Humidity Contours
+		[(generate_relHumidity_profs,year,month,date,monthConversion),(plot_relHumidity,err)], # 5 --> Relative Humidity Contours
+		[(generate_specHumidity_profs,year,month,date,monthConversion),(plot_specHumidity,err)] # 6 --> Specific Humidity Contours.
 	]
 	for index in chosenData:
 		for fn in functions[index]:
