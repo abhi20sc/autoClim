@@ -55,6 +55,10 @@ def plot_specHumidity(err):
 	shumData = np.rot90(shumData,1) # Switch primary looping var. to day
 	# new shape(7,2,73,144). --> shumData
 	im = Image.open("globalMap.png")
+	x = np.linspace(0,143,num=9,endpoint=True) 
+	xLabels = [str(i) for i in list(np.arange(start=-180,stop=181,step=45))]
+	y = np.linspace(0,72,num=7,endpoint=True)
+	yLabels = [str(i) for i in list(np.arange(start=-90,stop=91,step=30))]
 	dayLabel = 1
 	levelLabel = ['_850mbar','_300mbar']
 	for day in shumData:
@@ -62,9 +66,11 @@ def plot_specHumidity(err):
 		for level in day:
 			fig = plt.figure()
 			ax = plt.axes()
-			plt.imshow(im,extent=[0,144,0,73])
+			plt.imshow(im,extent=[0,143,0,72])
 			plt.xlabel("Longitude")
 			plt.ylabel("Latitude")
+			plt.xticks(x,xLabels)
+			plt.yticks(y,yLabels)
 			cs =  ax.contourf(level,alpha=0.5)
 			plt.colorbar(cs, ax=ax, label="Specific Humidity (kg/kg)", orientation='horizontal')
 			plt.savefig("finalOutput_plots/specificHumidity/specificHumidity_day" + str(dayLabel) + levelLabel[index_levelLabel] + ".png")
@@ -75,12 +81,18 @@ def plot_specHumidity(err):
 		dayLabel += 1
 	# Creating surface profiles (shumSurfData)
 	dayLabel = 1
+	x = np.linspace(0,191,num=9,endpoint=True)
+	xLabels = [str(i) for i in list(np.arange(start=-180,stop=181,step=45))]
+	y = np.linspace(0,93,num=7,endpoint=True)
+	yLabels = [str(i) for i in list(np.arange(start=-90,stop=91,step=30))]
 	for day in shumSurfData:
 		fig = plt.figure()
 		ax = plt.axes()
-		plt.imshow(im,extent=[0,192,0,94])
+		plt.imshow(im,extent=[0,191,0,93])
 		plt.xlabel("Longitude")
+		plt.xticks(x,xLabels)
 		plt.ylabel("Latitude")
+		plt.yticks(y,yLabels)
 		cs = ax.contourf(day, alpha=0.5)
 		plt.colorbar(cs, ax=ax, label="Specific Humidity (kg/kg)", orientation='horizontal')
 		plt.savefig("finalOutput_plots/specificHumidity/specificHumidity_day" + str(dayLabel) + "_atSurface.png")
@@ -89,5 +101,8 @@ def plot_specHumidity(err):
 		plt.close()
 		dayLabel += 1
 	return 0.
+
+plot_specHumidity(0.)
+
 
 # T62 grid error holds true for shumSurfData.

@@ -42,7 +42,7 @@ def make_daily_windT_plots(err):
 			cs = ax.contourf(airT,alpha=0.6)
 			plt.colorbar(cs, ax=ax, label="Air Temperature (deg C)", orientation="horizontal")
 			plt.quiver(uwnd,vwnd,color='red',alpha=0.6)
-			plt.savefig('finalOutput_plots/dailyProfiles/day' + str(dayTitleCount) + titles[levelTitleCount])
+			plt.savefig('finalOutput_plots/windT_daily/day' + str(dayTitleCount) + titles[levelTitleCount])
 			plt.cla() # Close ax w/colorbar
 			plt.clf() # Close figure for data
 			plt.close() # Remove image
@@ -87,7 +87,7 @@ def make_delta_windT_plots(err):
 			plt.yticks(y,yLabels)
 			plt.colorbar(cs,ax=ax,use_gridspec=False,label="Change in Air Temperature",orientation='horizontal')
 			plt.quiver(uwnd,vwnd,color='red',alpha=0.6)
-			plt.savefig('finalOutput_plots/deltaProfiles/day' + str(dayTitleCount) 
+			plt.savefig('finalOutput_plots/windT_delta/day' + str(dayTitleCount) 
 				+ "to" + str(dayTitleCount + 1) + titles[levelTitleCount])
 			plt.clf()
 			plt.cla()

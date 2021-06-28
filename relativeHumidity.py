@@ -37,6 +37,10 @@ def plot_relHumidity(err):
 	rhumData = np.load("outData/rhum_7d_3l_3x7x73x144.npy")
 	rhumData = np.rot90(rhumData,1) # Switch primary looping var. to day
 	# new shape(7,3,73,144).
+	x = np.linspace(0,143,num=9,endpoint=True) 
+	xLabels = [str(i) for i in list(np.arange(start=-180,stop=181,step=45))]
+	y = np.linspace(0,72,num=7,endpoint=True)
+	yLabels = [str(i) for i in list(np.arange(start=-90,stop=91,step=30))]
 	im = Image.open("globalMap.png")
 	dayLabel = 1
 	levelLabel = ['_atSurface','_850mbar','_300mbar']
@@ -45,9 +49,11 @@ def plot_relHumidity(err):
 		for level in day:
 			fig = plt.figure()
 			ax = plt.axes()
-			plt.imshow(im,extent=[0,144,0,73])
+			plt.imshow(im,extent=[0,143,0,72])
 			plt.xlabel("Longitude")
 			plt.ylabel("Latitude")
+			plt.xticks(x,xLabels)
+			plt.yticks(y,yLabels)
 			cs =  ax.contourf(level,alpha=0.5)
 			plt.colorbar(cs, ax=ax, label="Relative Humidity (%)", orientation='horizontal')
 			plt.savefig("finalOutput_plots/relativeHumidity/relativeHumidity_day" + str(dayLabel) + levelLabel[index_levelLabel] + ".png")
@@ -57,3 +63,5 @@ def plot_relHumidity(err):
 			index_levelLabel += 1
 		dayLabel += 1
 	return 0.
+
+plot_relHumidity(0.)
