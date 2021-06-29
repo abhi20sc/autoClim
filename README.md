@@ -1,4 +1,8 @@
+
 ## autoClim: Modern Climate Events - Automated Tropospheric Global Profiles
+
+<p align="center"><img src=https://user-images.githubusercontent.com/47943744/123750937-c550b800-d8d4-11eb-80f9-58d768010fd0.jpeg alt=autoClim_logo width="300" height="300" align="middle"></p>
+
 
 *autoClim  is currently undergoing a significant change in the variables offered, so this README may not provide a complete picture of the system's capabilities*  
 
