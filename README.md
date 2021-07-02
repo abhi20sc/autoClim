@@ -1,23 +1,152 @@
 
 ## autoClim: Modern Climate Events - Automated Tropospheric Global Profiles
 
+*autoClim is currently under development, and many features that have been mentioned here may not be available. They've been marked with an asterisk(\*) for your convenience.* 
+
 <p align="center"><img src=https://user-images.githubusercontent.com/47943744/123750937-c550b800-d8d4-11eb-80f9-58d768010fd0.jpeg alt=autoClim_logo width="300" height="300" align="middle"></p>
 
+It's exceedingly common to require reliable data when studying a specific climate event, like a tornado, for example. Significant local deviations from climatological normals, (a 30-year average of a weather variable for a given time of year, eg. JJA) can help us improve our understanding of these events. Faster, more accurate, and stronger forecasting is only attainable through an improved understanding of the mean climate system from which weather stems.
 
-*autoClim  is currently undergoing a significant change in the variables offered, so this README may not provide a complete picture of the system's capabilities*  
+That being said, it's still unjustifiably cumbersome to be able to use this data to draw meaningful conclusions. It's an unruly process that involves identifying relevant datasets (from hundreds of options), downloading dozens of gigabytes of data, parsing through data structures, matrix manipulation, and endless graphing parameterization to finally come to a basic understanding of the climate system's state at the time of the event. It's a fairly routine ordeal, but remains an ordeal nonethelesss. 
 
-This project looks to create a framework that allows a user to develop a list of useful atmospheric profiles automatically, when given a date. As of now, air temperature, zonal wind, and meridional wind are the only quantities considered. The system outputs a series of plots describing the week's events and changes in key variables. We use [NOAA's NCEP/NCAR pressure reanalysis](https://psl.noaa.gov/data/gridded/data.ncep.reanalysis.html) data as our primary input. All variables are evaluated at 3 altitudes: near-surface, the 850 mbar pressure level, and the 250 mbar pressure level. 
+*autoClim's trying to change that.*
 
-- The data is presented as an air temperature heatmap, under a quiver plot using zonal and meridional wind as x and y vector components, respectively. They both lie over a global outline map with country borders.
-- We have three major output categories (samples in **finalOutput_plots/**): 
-  - *dailyProfiles/* : Looks at each day's wind-temperature profile at all 3 altitudes. 
-  - *deltaProfiles/*: Changes in wind-temperature profiles across different days, at all 3 altitudes.
-  - *airTemperature_3dSurfacePlots/*: 3d surface plots highlighting air temperature profiles across different days, at all 3 altitudes.
-- The program uses a date as input (after 1948), while the week's (plus minus 3 days) profiles act as output.
-  - eg. for an input of November 7, 2020, the program outputs profiles from the 4th to the 10th, inclusive.
-- Sample output is currently centered on **November 7, 2020**
-- Datasets (used for sample output) handled by the *downloadData()* function in **pullData.py** have not been added to the repository. For the sake of maintaining a clean directory structure, an empty stand-in text file has been added to their target folder.
-- Execute *runMain.py* to create your own profiles! (Python 3.7)
+Essentially, we're looking to create a framework that allows a user to develop a set (see 'Output Categories') of useful atmospheric profiles automatically, when given a date. We wanted to create a system that's automated end-to-end, that gives you the full picture you need, when you need it. Used effectively, the sheer number of variables autoClim brings should be able to give you a high-level idea of what's going on in the system, so that you can figure out how and where to dig a little deeper. 
+
+We try to provide greater context by supplying profiles for the week of the date input to the system (&#177; 3 days). Therefore, output filenames with the "day4" suffix are profiles for the specific date the user requests. We use <a href="https://psl.noaa.gov/data/gridded/data.ncep.reanalysis.html" target="_blank">NOAA</a>'s <a href="http://www.atmos.albany.edu/daes/atmclasses/atm305/Kistler_2001.pdf" target="_blank"> NCEP/NCAR 1 reanalysis </a> for all our data requirements. We're completely open-source, having published under the <a href="https://github.com/Mihir-DG/autoClim/blob/main/LICENSE" target="_blank">MIT license</a>. 
+
+To help  give you a better idea of what we're looking to create, we've attached samples to *finalOutput_plots/* for all currently-available output categories. The samples are currently centered on **November 7, 2020** (so, profiles are generated for the 4th to the 10th, inclusive!). Datasets (used for sample output) handled by the *downloadData()* function in **pullData.py** have not been added to the repository. For the sake of maintaining a clean directory structure, an empty stand-in text file has been added to their target folder.
+
+**Execute *runMain.py* to create your own profiles! (Python 3.7)**
+
+## Output Categories:
+
+We strongly believe that autoClim's strength will lie in the diversity of the profiles it'll offer. Here's our list!
+<ol>
+													<br/>
+													<li><b>Wind Quiver Plot (overlaying Air Temperature (K) contours): </b></li>
+													<ul>
+														<li> Uses zonal and meridional wind values as x- and y- vector components to generate a global dynamics profile. </li>
+														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;; Air temperature sampling rate of 2.0, wind vector sampling rate of 3.0.</li>
+														<li>Coverage: (Surface, 850 mbar pressure level, 250 mbar pressure level), Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Delta Profiles for Wind Quivers</b> - changes across the chosen week</li>
+													<ul>
+														<li>Identical resolution and spatial coverage as Wind Quivers.</li>
+													</ul>
+  <br/>
+													<li><b>Air Temperature (K)</b></li>
+													<ul>
+														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
+														<li>Coverage: (Surface, 850 mbar pressure level, 250 mbar pressure level), Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Precipitation Rate (Kg/m<sup>2</sup>/s) </b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: Surface, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Relative Humidity (%)</b></li>
+													<ul>
+														<li>Resolution: 2.5&#xb0; x 2.5&#xb0; for 250 mbar and 850 mbar pressure levels; T62 Gaussian grid with 194x92 grid points for surface profiles </li>
+														<li>Coverage: (Surface, 850 mbar pressure level, 250 mbar pressure level), Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Specific Humidity (kg/kg)</b></li>
+													<ul>
+														<li>Resolution: 2.5&#xb0; x 2.5&#xb0; for 250 mbar and 850 mbar pressure levels; T62 Gaussian grid with 194x92 grid points for surface profiles </li>
+														<li>Coverage: (Surface, 850 mbar pressure level, 250 mbar pressure level), Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Cloud Cover (%) *</b></li>
+													<ul>
+														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
+														<li>Coverage: EATM - Entire Atmosphere</li>
+													</ul>
+  <br/>
+													<li><b>Skin Temperature (K) *</b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Potential Temperature (K)*</b></li>
+													<ul>
+														<li>Provided to help identify vertical regions of convective instability (and thus, action).
+														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
+														<li>Coverage: Full vertical profiles for key latitudes (0&#xb0;, 30&#xb0;, 60&#xb0;, 90&#xb0; for each hemisphere)
+													</ul>
+  <br/>
+                          <li><b>Precipitable Water (Kg/m<sup>2</sup>)*</b></li>
+												 	<ul>
+												 		<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
+														<li>Coverage: EATM - Entire Atmosphere</li>
+													</ul>
+  <br/>
+													<li><b>Latent Heat Net Flux (W/m<sup>2</sup>)*</b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: Surface, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Sensible Heat Net Flux (W/m<sup>2</sup>)*</b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: Surface, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Ground Heat Net Flux (W/m<sup>2</sup>)*</b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: Surface, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Potential Evapotranspiration Rate (mm/s)*</b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: Surface, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Outgoing Longwave Radiation - OLR (W/m<sup>2</sup>)*</b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: NTAT (Nominal Top of Atmosphere) / Aggregate Radiating Pressure, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Emitted Upwelling Longwave Radiation (W/m<sup>2</sup>)*</b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: Surface, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Net Longwave Radiation (W/m<sup>2</sup>)*</b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: Surface, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Net Shortwave Radiation (W/m<sup>2</sup>)*</b></li>
+													<ul>
+														<li>Resolution: T62 Gaussian grid with 194x92 grid points</li>
+														<li>Coverage: Surface, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Tropopause Air Temperature i.e. Local minimum (K)*</b></li>
+													<ul>
+														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
+														<li>Coverage: Tropopause, Global, 7 days</li>
+													</ul>
+  <br/>
+													<li><b>Tropopause Air Pressure (mbar)*</b></li>
+													<ul>
+														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
+														<li>Coverage: Tropopause, Global, 7 days</li>
+													</ul>
+												</ol>
+<em>*: Currently under development</em>
+ 
 
 ### Dependencies:
 - **numpy 1.19.5**: Primary module used for data handling throughout the project.
@@ -31,7 +160,3 @@ This project looks to create a framework that allows a user to develop a list of
 
 
 **Here's some of our output!**
-
-![temperature_day4_250mbar](https://user-images.githubusercontent.com/47943744/120197959-3867ff80-c23f-11eb-8f78-15a9741785f6.png)
-![day5_850mbar](https://user-images.githubusercontent.com/47943744/118973513-61f77000-b98f-11eb-9cfd-89eff3742d0e.png)
-![day2to3_250mbar](https://user-images.githubusercontent.com/47943744/118972273-0082d180-b98e-11eb-90d9-c855b542ae36.png)
