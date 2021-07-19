@@ -149,13 +149,13 @@ We strongly believe that autoClim's strength will lie in the diversity of the pr
  
 
 ### Dependencies:
-- **numpy 1.19.5**: Primary module used for data handling throughout the project.
-- **Matplotlib 3.3.4**: Used to present results graphically.
-- **netCDF4 1.5.2**: Used as a handler for .nc file input.
-- **Cartopy 0.19.2**: Provides a global basemap.
-- **wget 3.2.0**: Web interfacing to automate dataset downloads.
+- **numpy v1.19.5**: Primary module used for data handling throughout the project.
+- **Matplotlib v3.3.4**: Used to present results graphically.
+- **netCDF4 v1.5.2**: Used as a handler for .nc file input.
+- **Cartopy v0.19.2**: Provides a global basemap.
+- **wget v3.2.0**: Web interfacing to automate dataset downloads.
 - **os**: Handles internal directory structure.
-- **PIL 1.1.6**: Setting up the basemap usage in plots.
+- **PIL v1.1.6**: Setting up the basemap usage in plots.
 
 
 
