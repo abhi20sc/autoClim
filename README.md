@@ -76,7 +76,7 @@ We strongly believe that autoClim's strength will lie in the diversity of the pr
 													<ul>
 														<li>Provided to help identify vertical regions of convective instability (and thus, action).
 														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
-														<li>Coverage: Full vertical profiles for key latitudes (0&#xb0;, 30&#xb0;, 60&#xb0;, 90&#xb0; for each hemisphere)
+														<li>Coverage: Full vertical profiles for key latitudes (0&#xb0;, 30&#xb0;, 60&#xb0;, 90&#xb0; for each hemisphere), Global, 7 days
 													</ul>
   <br/>
                           <li><b>Precipitable Water (Kg/m<sup>2</sup>)*</b></li>
