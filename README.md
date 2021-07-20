@@ -63,7 +63,7 @@ We strongly believe that autoClim's strength will lie in the diversity of the pr
 													<li><b>Cloud Cover (%) *</b></li>
 													<ul>
 														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
-														<li>Coverage: EATM - Entire Atmosphere</li>
+														<li>Coverage: EATM - Entire Atmosphere, Global, 7 days</li>
 													</ul>
   <br/>
 													<li><b>Skin Temperature (K) *</b></li>
@@ -76,13 +76,13 @@ We strongly believe that autoClim's strength will lie in the diversity of the pr
 													<ul>
 														<li>Provided to help identify vertical regions of convective instability (and thus, action).
 														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
-														<li>Coverage: Full vertical profiles for key latitudes (0&#xb0;, 30&#xb0;, 60&#xb0;, 90&#xb0; for each hemisphere)
+														<li>Coverage: Full vertical profiles for key latitudes (0&#xb0;, 30&#xb0;, 60&#xb0;, 90&#xb0; for each hemisphere), Global, 7 days
 													</ul>
   <br/>
                           <li><b>Precipitable Water (Kg/m<sup>2</sup>)*</b></li>
 												 	<ul>
 												 		<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
-														<li>Coverage: EATM - Entire Atmosphere</li>
+														<li>Coverage: EATM - Entire Atmosphere, Global, 7 days</li>
 													</ul>
   <br/>
 													<li><b>Latent Heat Net Flux (W/m<sup>2</sup>)*</b></li>
@@ -149,13 +149,13 @@ We strongly believe that autoClim's strength will lie in the diversity of the pr
  
 
 ### Dependencies:
-- **numpy 1.19.5**: Primary module used for data handling throughout the project.
-- **Matplotlib 3.3.4**: Used to present results graphically.
-- **netCDF4 1.5.2**: Used as a handler for .nc file input.
-- **Cartopy 0.19.2**: Provides a global basemap.
-- **wget 3.2.0**: Web interfacing to automate dataset downloads.
+- **numpy v1.19.5**: Primary module used for data handling throughout the project.
+- **Matplotlib v3.3.4**: Used to present results graphically.
+- **netCDF4 v1.5.2**: Used as a handler for .nc file input.
+- **Cartopy v0.19.2**: Provides a global basemap.
+- **wget v3.2.0**: Web interfacing to automate dataset downloads.
 - **os**: Handles internal directory structure.
-- **PIL 1.1.6**: Setting up the basemap usage in plots.
+- **PIL v1.1.6**: Setting up the basemap usage in plots.
 
 
 
