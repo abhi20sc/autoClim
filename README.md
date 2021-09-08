@@ -5,6 +5,10 @@
 
 <p align="center"><img src=https://user-images.githubusercontent.com/47943744/123750937-c550b800-d8d4-11eb-80f9-58d768010fd0.jpeg alt=autoClim_logo width="300" height="300" align="middle"></p>
 
+### Authors:
+- Mihir Dasgupta <<dasguptamihir10@gmail.com>>
+- Abhijith Pradeep <<abhijithp20@gmail.com>>
+
 It's exceedingly common to require reliable data when studying a specific climate event, like a tornado, for example. Significant local deviations from climatological normals, (a 30-year average of a weather variable for a given time of year, eg. JJA) can help us improve our understanding of these events. Faster, more accurate, and stronger forecasting is only attainable through an improved understanding of the mean climate system from which weather stems.
 
 That being said, it's still unjustifiably cumbersome to be able to use this data to draw meaningful conclusions. It's an unruly process that involves identifying relevant datasets (from hundreds of options), downloading dozens of gigabytes of data, parsing through data structures, matrix manipulation, and endless graphing parameterization to finally come to a basic understanding of the climate system's state at the time of the event. It's a fairly routine ordeal, but remains an ordeal nonethelesss. 
@@ -156,7 +160,5 @@ We strongly believe that autoClim's strength will lie in the diversity of the pr
 - **wget v3.2.0**: Web interfacing to automate dataset downloads.
 - **os**: Handles internal directory structure.
 - **PIL v1.1.6**: Setting up the basemap usage in plots.
-
-
 
 
