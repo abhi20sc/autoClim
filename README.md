@@ -60,7 +60,7 @@ We strongly believe that autoClim's strength will lie in the diversity of the pr
 														<li>Coverage: (Surface, 850 mbar pressure level, 250 mbar pressure level), Global, 7 days</li>
 													</ul>
   <br/>
-													<li><b>Cloud Cover (%) *</b></li>
+													<li><b>Cloud Cover (%)</b></li>
 													<ul>
 														<li>Resolution: 2.5&#xb0; x 2.5&#xb0;</li>
 														<li>Coverage: EATM - Entire Atmosphere, Global, 7 days</li>
