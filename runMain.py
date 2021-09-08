@@ -7,6 +7,7 @@ from makeTemp3dSurface import *
 from precipitationRate import *
 from relativeHumidity import *
 from specificHumidity import *
+from cloudCover import *
 
 from matplotlib import pyplot as plt
 import numpy as np
@@ -31,6 +32,7 @@ def main():
 		[(generate_precipitationRate_profs,year,month,date,monthConversion),(plot_precipitationRate,err)], # 4 --> Precipitation Rate Contours
 		[(generate_relHumidity_profs,year,month,date,monthConversion),(plot_relHumidity,err)], # 5 --> Relative Humidity Contours
 		[(generate_specHumidity_profs,year,month,date,monthConversion),(plot_specHumidity,err)] # 6 --> Specific Humidity Contours.
+		[((generate_cloudCover,year,month,date,monthConversion)),(plot_cloudCover, err)] # 7 --> Cloud Cover Contours
 	]
 	for index in chosenData:
 		for fn in functions[index]:

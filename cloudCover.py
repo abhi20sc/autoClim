@@ -22,7 +22,7 @@ def generate_cloudCover(year,month,date,monthConversion):
 	np.save("outData/crate_7day_atms_7x94x192",crate)
 	return 0.
 
-def plot_cloudCoverRate(err):
+def plot_cloudCover(err):
 	crateData = np.load("outData/crate_7day_atms_7x94x192.npy")
 	x = np.linspace(0,191,num=9,endpoint=True)
 	xLabels = [str(i) for i in list(np.arange(start=-180,stop=181,step=45))]
