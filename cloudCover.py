@@ -19,7 +19,7 @@ def generate_cloudCover(year,month,date,monthConversion):
 	if leapYear == True and newDate > 59:
 		newDate += 1
 	crate = crate[newDate-3:newDate+4]
-	np.save("outData/crate_7day_atms_7x94x192",crate)
+	np.save("outData/crate_7day_atms_7x2.5x2.5",crate)
 	return 0.
 
 def plot_cloudCover(err):
